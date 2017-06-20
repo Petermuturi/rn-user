@@ -1,15 +1,31 @@
 import React from 'react';
-import { Container, Content } from 'native-base';
-import { View, Text } from 'react-native';
 
-export default ()=> {
-	return(
-		<Container>
-			<Content>
-				<View>
-					<Text>Hello World</Text>
-				</View>
-			</Content>
-		</Container>
-		)
-}
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import { createLogger } from 'redux-logger';
+
+import reducers from './reducers/reducer';
+import App from './App';
+
+const loggerMiddleware = createLogger({ predicate: (getState, action)=> __DEV__ });
+
+function configureStore(initialState) {
+	const enhancer = compose(
+		applyMiddleware(
+			thunkMiddleware,
+			loggerMiddleware
+			),
+		);
+	
+	return createStore(reducers, initialState, enhancer,
+		window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+};
+
+const store = configureStore({});
+
+export default ()=> (
+	<Provider store={store}>
+		<App/>
+	</Provider>
+);
