@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import User from '../../components/user/User';
+import UserHeader from '../../components/user/UserHeader';
 
 const mapStateToProps = (state, ownProps)=> {
 	return {}
@@ -9,5 +9,4 @@ const mapDispatchToProps = (dispatch)=> {
 	return{}
 }
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(User);
+export default connect(mapStateToProps, mapDispatchToProps)(UserHeader);

@@ -1,10 +1,13 @@
 import React from 'react';
 
-import { Container, Content, Text } from 'native-base';
+import { Container } from 'native-base';
 
-export default({userDetails, setUserDetails})=>
+import UserHeaderContainer from '../../containers/user/UserHeaderContainer';
+import UserContentContainer from '../../containers/user/UserContentContainer';
+
+
+export default()=>
 	<Container>
-		<Content>
-			<Text>Still rendering</Text>
-		</Content>
+		<UserHeaderContainer/>
+		<UserContentContainer/>
 	</Container>

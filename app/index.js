@@ -17,15 +17,17 @@ function configureStore(initialState) {
 			loggerMiddleware
 			),
 		);
-	
+
 	return createStore(reducers, initialState, enhancer,
 		window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 };
 
 const store = configureStore({});
 
-export default ()=> (
+export default ()=> {
+	return(
 	<Provider store={store}>
 		<App/>
 	</Provider>
-);
+		)
+}

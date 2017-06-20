@@ -5,7 +5,11 @@ import getTheme from '../native-base-theme/components';
 
 import UserContainer from './containers/user/UserContainer';
 
-export default ()=> 
+export default ()=> {
+
+	return(
 	<StyleProvider style={getTheme()}>
      <UserContainer/>
    </StyleProvider>
+		)
+}
